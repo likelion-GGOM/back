@@ -5,10 +5,6 @@ from django.contrib.auth import login, authenticate
 from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth import logout as auth_logout
 from django.core.mail.message import EmailMessage
-from .forms import RecoveryPwForm
-from .helper import email_auth_num
-from django.http import HttpResponse
-from .forms import CustomSetPasswordForm  
 @csrf_protect
 
 #회원가입
@@ -26,7 +22,7 @@ def signup(request):
             nickname=nickname,
         )
         login(request, user=user)
-        return redirect('login_view')
+        return redirect('accounts:login_view')
 
     return render(request, 'signup.html')
 
@@ -38,7 +34,7 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user=user)
-            return redirect('home') # 로그인 성공 시 이동할 URL 연결할 곳
+            return redirect('accounts:home') # 로그인 성공 시 이동할 URL 연결할 곳
         else:
             return render(request, 'login.html', {'error' : 'username or password is incorrect.'})
     else:
