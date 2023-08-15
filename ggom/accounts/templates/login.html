@@ -10,7 +10,11 @@
             <label for="username">ID:</label><br>
             <input type="text" id="username" name="username" required><br>
             <label for="password">Password:</label><br>
-            <input type="password" id="password" name="password" required><br><br>
+            <input type="password" id="password" name="password" required><br>
+            <!--로그인 실패시 에러창-->
+            {% if error %}
+            <p style="color: red;">{{ error }}</p>
+            {% endif %}
             <button type="submit">로그인</button>
         </form>
     </div>

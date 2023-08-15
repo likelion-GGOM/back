@@ -7,8 +7,8 @@ from django.contrib.auth import logout as auth_logout
 from django.core.mail.message import EmailMessage
 from .forms import ProfileImageForm, ChangeNicknameForm
 from django.contrib.auth.decorators import login_required
-@csrf_protect
 
+@csrf_protect
 #회원가입
 def signup(request):
     if request.method == 'POST':
@@ -28,6 +28,7 @@ def signup(request):
 
     return render(request, 'signup.html')
 
+@csrf_protect
 #로그인
 def login_view(request):
     if request.method == 'POST':
@@ -82,4 +83,16 @@ def change_nickname(request):
     else:
         form = ChangeNicknameForm()
     return render(request, 'nickname.html',{'form':form})
+
+#프로필 사진 변경
+def change_profile(request):
+    if request.method == 'POST':
+        image_form = ProfileImageForm(request.POST, request.FILES, instance=request.user)
+        if image_form.is_valid():
+            image_form.save()
+            return redirect('accounts:mypage')
+    else:
+        image_form = ProfileImageForm(instance=request.user)
+    return render(request, 'profile.html',{'image_form':image_form})
+
 #메일보내기
