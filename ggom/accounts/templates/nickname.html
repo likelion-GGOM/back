@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<head></head>
+<body>
+    <h2>닉네임 변경</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">변경하기</button>
+    </form>
+</body>
