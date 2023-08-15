@@ -8,3 +8,4 @@ class ProfileImageForm(forms.ModelForm):
 
 class ChangeNicknameForm(forms.Form):
     new_nickname = forms.CharField(max_length=50, label='new_nickname')
+
