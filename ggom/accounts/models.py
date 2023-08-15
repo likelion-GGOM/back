@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, PermissionsMixin
+from django.conf import settings
 
 class CustomUserManager(BaseUserManager):
     def create_user(self, username, password=None, **extra_fields):
@@ -21,6 +22,8 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     password = models.CharField(max_length=100)
     email = models.CharField(max_length=50, unique=True)
     nickname = models.CharField(max_length=100, unique=True)
+    profile_image = models.ImageField(upload_to='profile_images/', null=True, blank=True)
+
 
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
@@ -38,3 +41,5 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         db_table ='custom_user'
         verbose_name ='custom_user'
         verbose_name_plural = 'custom_user'
+
+
