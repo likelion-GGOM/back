@@ -12,6 +12,8 @@ class ProfileImageForm(forms.ModelForm):
 class ChangeNicknameForm(forms.Form):
     new_nickname = forms.CharField(max_length=50, label='new_nickname')
 
+
+'''
 class CustomPasswordChangeForm(PasswordChangeForm):
     error_messages = {
         'password_incorrect': _("입력한 기존 비밀번호가 올바르지 않습니다."),
@@ -36,4 +38,4 @@ class CustomPasswordChangeForm(PasswordChangeForm):
         if new_password1 and new_password2 and new_password1 != new_password2:
             raise forms.ValidationError(self.error_messages['password_mismatch'])
 
-
+'''
