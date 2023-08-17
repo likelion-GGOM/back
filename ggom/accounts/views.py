@@ -5,7 +5,7 @@ from django.contrib.auth import login, authenticate
 from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth import logout as auth_logout
 from django.core.mail.message import EmailMessage
-from .forms import ProfileImageForm, ChangeNicknameForm, CustomPasswordChangeForm
+from .forms import ProfileImageForm, ChangeNicknameForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.hashers import check_password
 from django.contrib.auth.forms import PasswordChangeForm
@@ -104,17 +104,20 @@ def change_profile(request):
 @login_required
 def change_password(request):
     if request.method == 'POST':
-        password_change_form = CustomPasswordChangeForm(request.user, request.POST)
-        if password_change_form.is_valid():
-            user = password_change_form.save()
-            update_session_auth_hash(request, user)  # 사용자 로그인 상태 유지
-            messages.success(request, "비밀번호를 성공적으로 변경하였습니다.")
-            return redirect('accounts:mypage')
+        user = request.user
+        origin_password = request.POST['origin_password']
+        if check_password(origin_password, user.password):
+            new_password = request.POST['new_password1']  
+            confirm_password = request.POST['new_password2']  
+            if new_password == confirm_password:
+                user.set_password(new_password)
+                user.save()
+                auth.login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+                return redirect('accounts:mypage')
+            else:
+                messages.error(request, '비밀번호가 일치하지 않습니다.')
         else:
-            for field_name, errors in password_change_form.errors.items():
-                for error in errors:
-                    messages.error(request, error)
+            messages.error(request, '비밀번호를 다시 입력해주세요.')
     else:
-        password_change_form = CustomPasswordChangeForm(request.user)
-    return render(request, 'change_password.html', {'password_change_form': password_change_form})
+        return render(request, 'change_password.html')
 
