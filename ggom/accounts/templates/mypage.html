@@ -1,6 +1,14 @@
+{% load static %}
 <!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="{% static 'js/mypage.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/mypage.css' %}">
 
+    <title>myPage</title>
 </head>
 <body>
     <h1>마이페이지</h1>
@@ -29,19 +37,18 @@
     <a href="{% url 'accounts:change_nickname' %}">닉네임 변경</a>
 
 
-    <!-- 사용자가 작성한 질문 
+    사용자가 작성한 질문 
     <h2>내가 작성한 질문</h2>
     {% for question in questions %}
         <div>{{ question.content }}</div>
     {% endfor %}
 
-     사용자가 작성한 답변 
+    사용자가 작성한 답변 
     <h2>내가 작성한 답변</h2>
     {% for answer in answers %}
         <div>{{ answer.content }}</div>
-    {% endfor %} -->
+    {% endfor %}
 
     <!-- 로그아웃 링크 -->
-    <a href="{% url 'accounts:logout' %}">로그아웃</a>
-
 </body>
+</html>

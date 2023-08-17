@@ -1,0 +1,274 @@
+@font-face {
+  font-family: 'Pretendard-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
+
+.full {
+  font-family: 'Pretendard-Regular';
+  margin: 0 auto;
+  color: #404040;
+}
+
+.menu {
+  font-weight: bolder;
+}
+.hh {
+  border: none;
+}
+
+.line {
+  border-top: 1px solid #c9c8c8;
+  margin-top: 5%;
+  width: 100%;
+
+}
+.col {
+  margin-top: 10%;
+}
+
+.col2 {
+  margin-top:-6% ;
+  text-align: right;
+  margin-right: 5%;
+}
+
+.row {
+  text-align: center;
+}
+
+.questionInput {
+  margin-top: 5%;
+  width: 70%;
+  padding: 10px 12px;
+  text-align: left;
+}
+
+input {
+  border-radius: 10px;
+  border: 1px solid #bbb;
+}
+
+.Q {
+  margin-right: 1%;
+  font-weight: bold;
+  color: #2E7CF6;
+}
+
+.text {
+  margin-top: 10%;
+  text-align: center;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.text2 {
+  margin-top: 10%;
+  text-align: center;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.contentInput {
+  margin: 0 auto;
+  text-align: center;
+  padding: auto;
+  border: none;
+  margin-top: 5%;
+}
+
+textarea {
+  padding: 12px;
+  resize: none;
+  border-radius: 10px; 
+  width: 80%;
+  height: 30%;
+  border: 1px solid #bbb;
+}
+
+.fbtn {
+  text-align: center;
+}
+
+.deleteBtn{
+  margin: 0 auto;
+  border: none;
+  font-size: small;
+  color: white;
+  padding: 15px;
+  cursor: pointer;
+  border-radius: 10px;
+  background-color: #2E7CF6;
+  margin-top: 5%;
+  margin-bottom: 10%;
+  width: 40%;
+  font-weight: bold;
+}
+.input[type="file" i] {
+  background-color: #2E7CF6;
+}
+
+.hashtagBox { 
+  margin: 0 auto;
+  text-align: center;
+}
+
+.hashtag {
+  margin-top: 5%;
+  font-size: smaller;
+  width: 40%;
+  text-align: center;
+  padding: 7px 9px;
+  border-radius: 20px;
+}
+
+.saveBtn{
+  margin: 0 auto;
+  border: none;
+  font-size: small;
+  color: white;
+  padding: 15px;
+  cursor: pointer;
+  border-radius: 10px;
+  background-color: #2E7CF6;
+  margin-top: 5%;
+  margin-bottom: 10%;
+  width: 40%;
+  font-weight: bold;
+}
+
+.wrapper {
+  padding: 20px 28px;
+  margin: 0;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  flex-flow: row wrap;
+  border: solid 2px white;
+  
+}
+
+h3 {
+  margin: 10px 14px 10px 0;
+  font-weight: 300;
+  font-size: 36px;
+}
+
+p {
+  margin: 10px 10px;
+  font-weight: 300;
+  font-size: 14px;
+  opacity: 0.8;
+  letter-spacing: 1px;
+}
+
+.hhh {
+  border-color: #bbb;
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin: 8px;
+  width: 100%;
+  color: #666;
+  font-size: 16px;
+  outline: none;
+  font-size: smaller;
+}
+
+.tag-container {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.tag{
+
+  pointer-events: none;
+  color: #404040;
+  padding: 6px;
+  margin: 5px;
+}
+
+.tag::before {
+  pointer-events: all;
+  display: inline-block;
+  content: 'x';  
+  height: 20px;
+  width: 20px;
+  margin-right: 6px;
+  text-align: center;
+  color: #ffffff;
+  background-color: #2E7CF6;
+  cursor: pointer;
+  border-radius: 30%;
+}
+
+.file-upload input[type="file"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip:rect(0,0,0,0);
+  border: 0;
+}
+
+.file-upload label {
+  display: inline-block;
+  padding: .5em .75em;
+  color: #999;
+  font-size: inherit;
+  line-height: normal;
+  vertical-align: middle;
+  background-color: #fdfdfd;
+  cursor: pointer;
+  border: 1px solid #ebebeb;
+  border-bottom-color: #e2e2e2;
+  border-radius: .25em;
+}
+
+.file-upload .upload-name {
+  display: inline-block;
+  padding: .5em .75em;
+  font-size: inherit;
+  font-family: inherit;
+  line-height: normal;
+  vertical-align: middle;
+  background-color: #f5f5f5;
+  border: 1px solid #ebebeb;
+  border-bottom-color: #e2e2e2;
+  border-radius: .25em;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.file-upload .upload-display {
+  margin-bottom: 5px;
+}
+
+.file-upload .upload-thumb-wrap {
+  display: inline-block;
+  width: 54px;
+  padding: 2px;
+  vertical-align: middle;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.file-upload .upload-display img {
+  display: block;
+  max-width: 100%;
+  width: 100% \9;
+  height: auto;
+}
+
+.button2 {
+  text-align: center;
+}
+
+.fileIn {
+  margin-top: 5%;
+  text-align: center;
+}
