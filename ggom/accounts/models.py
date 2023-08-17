@@ -24,7 +24,6 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     nickname = models.CharField(max_length=100, unique=True)
     profile_image = models.ImageField(upload_to='profile_images/', null=True, blank=True)
 
-
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
@@ -36,6 +35,11 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     def has_module_perms(self, app_label):
         return True
+    
+    def get_image_url(self):
+        if self.profile_image:
+            return f'{settings.MEDIA_URL}{self.profile_image}'
+        return None
 
     class Meta:
         db_table ='custom_user'

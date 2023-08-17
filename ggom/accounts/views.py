@@ -7,8 +7,13 @@ from django.contrib.auth import logout as auth_logout
 from django.core.mail.message import EmailMessage
 from .forms import ProfileImageForm, ChangeNicknameForm
 from django.contrib.auth.decorators import login_required
-@csrf_protect
+from django.contrib.auth.hashers import check_password
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth import update_session_auth_hash
+from django.contrib import messages
 
+
+@csrf_protect
 #회원가입
 def signup(request):
     if request.method == 'POST':
@@ -28,6 +33,7 @@ def signup(request):
 
     return render(request, 'signup.html')
 
+@csrf_protect
 #로그인
 def login_view(request):
     if request.method == 'POST':
@@ -82,4 +88,36 @@ def change_nickname(request):
     else:
         form = ChangeNicknameForm()
     return render(request, 'nickname.html',{'form':form})
-#메일보내기
+
+#프로필 사진 변경
+def change_profile(request):
+    if request.method == 'POST':
+        image_form = ProfileImageForm(request.POST, request.FILES, instance=request.user)
+        if image_form.is_valid():
+            image_form.save()
+            return redirect('accounts:mypage')
+    else:
+        image_form = ProfileImageForm(instance=request.user)
+    return render(request, 'profile.html',{'image_form':image_form})
+
+#비번변경
+@login_required
+def change_password(request):
+    if request.method == 'POST':
+        user = request.user
+        origin_password = request.POST['origin_password']
+        if check_password(origin_password, user.password):
+            new_password = request.POST['new_password1']  
+            confirm_password = request.POST['new_password2']  
+            if new_password == confirm_password:
+                user.set_password(new_password)
+                user.save()
+                auth.login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+                return redirect('accounts:mypage')
+            else:
+                messages.error(request, '비밀번호가 일치하지 않습니다.')
+        else:
+            messages.error(request, '비밀번호를 다시 입력해주세요.')
+    else:
+        return render(request, 'change_password.html')
+

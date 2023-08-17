@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<head></head>
+<body>
+    <h2>프로필 사진 변경</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ image_form.as_p }}
+        <button type="submit">사진 변경하기</button>
+    </form>
+</body>
