@@ -14,15 +14,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-with open(secret_file) as f:
-    secrets = json.loads(f.read())
-
-def get_secret(setting, secrets=secrets):
-    try:
-        return secrets[setting]
-    except KeyError:
-        error_msg = "Set the {} environment variable".format(setting)
-        raise ImproperlyConfigured(error_msg)
 
 SECRET_KEY = '28r6%w-ci06rqzajsi2^4nu$(7e#zudzf@%e1pgbv49lv5-%xl'
 
