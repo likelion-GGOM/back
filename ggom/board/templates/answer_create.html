@@ -12,6 +12,8 @@
         <label for="title">제목:</label>
         <p>{{ question.title }}</p>
 
+        <label>작성자</label> 
+        <p>{{ question.author }}</p>
         <form action="{% url 'board:answer_create' question.id %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.as_p }}

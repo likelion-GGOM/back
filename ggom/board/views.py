@@ -1,25 +1,31 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from django.utils import timezone
-from .models import Question, Answer, Comment
+from .models import Question, Answer, Comment, QuestionImage
 from .forms import QuestionForm, AnswerForm, CommentForm
 from django.contrib.auth.decorators import login_required
+from accounts.models import CustomUser
+from django.contrib.auth import get_user_model
+from .models import Question, QuestionImage
 
 
 # 질문 작성 페이지와 질문 작성 처리
-# @login_required()
+@login_required()
 def question_create(request):
     if request.method == 'POST':
-        form = QuestionForm(request.POST) # POST 데이터와 파일을 함께 처리
+        form = QuestionForm(request.POST, request.FILES)
         if form.is_valid():
             new_question = form.save(commit=False)
-            new_question.create_date = timezone.now()
+            new_question.author = request.user
             new_question.save()
-            print("질문 작성 완료")
-            return redirect('board:question_detail', question_id=new_question.id) # 글 작성 후 상세 페이지로 이동
+            for image_file in request.FILES.getlist('images'):
+                QuestionImage.objects.create(question=new_question, image=image_file)
+            return redirect('board:question_list')
     else:
-        form = QuestionForm() 
-    return render(request, 'question_new.html', {'form': form}) # 작성 폼 페이지
+        form = QuestionForm()
+    return render(request, 'question_new.html', {'form': form})
+
+
 
 # 질문 상세 보기
 def question_detail(request, question_id):
