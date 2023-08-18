@@ -1,50 +1,77 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from django.utils import timezone
-from .models import QuestionForm, AnswerForm, CommentForm
-from django.views.decorators.csrf import csrf_protect
+from .models import Question, Answer, Comment
+from .forms import QuestionForm, AnswerForm, CommentForm
+from django.contrib.auth.decorators import login_required
 
 
 # 질문 작성 페이지와 질문 작성 처리
+# @login_required()
 def question_create(request):
     if request.method == 'POST':
-        form = QuestionForm(request.POST, request.FILES) # POST 데이터와 파일을 함께 처리
+        form = QuestionForm(request.POST) # POST 데이터와 파일을 함께 처리
         if form.is_valid():
             new_question = form.save(commit=False)
             new_question.create_date = timezone.now()
             new_question.save()
-            return render(request, 'question_create.html') # 작성 성공시 표시될 페이지
+            print("질문 작성 완료")
+            return redirect('board:question_detail', question_id=new_question.id) # 글 작성 후 상세 페이지로 이동
     else:
         form = QuestionForm() 
     return render(request, 'question_new.html', {'form': form}) # 작성 폼 페이지
 
 # 질문 상세 보기
 def question_detail(request, question_id):
-    question = get_object_or_404(QuestionForm, pk=question_id)
-    return render(request, 'board/question_detail.html', {'question': question})
+    question = get_object_or_404(Question, pk=question_id)
+    # is_author = request.user == question.author # 현재 로그인된 사용자와 글의 작성자 비교
+    answer = Answer.objects.filter(question=question_id)
+    return render(request, 'question_detail.html', {'question': question})
 
 
 # 질문에 답변 작성
 def answer_create(request, question_id):
+    question = get_object_or_404(Question, pk=question_id)
+
     if request.method == 'POST':
         form = AnswerForm(request.POST, request.FILES) # POST 데이터와 파일을 함께 처리
         if form.is_valid():
             answer = form.save(commit=False)
+            answer.title = request.POST['title']
             answer.create_date = timezone.now()
-            answer.question = get_object_or_404(QuestionForm, pk=question_id)
+            answer.question = get_object_or_404(Question, pk=question_id)
             answer.author = request.user
             answer.save()
-            return redirect('question_detail', question_id=question_id) # 답변 작성 후 질문 상세 페이지로 이동
+            print("답변 작성 완료")
+            return redirect('board:question_detail', question_id=question_id) # 답변 작성 후 질문 상세 페이지로 이동
     else:
         form = AnswerForm()
     return render(request, 'question_detail.html', {'form': form})
 
 
+# 질문 게시판 목록
+def question_list(request):
+    if request.method == 'GET':
+        question = Question.objects.all()
+    return render(request, 'question_list.html', {'question': question})
+
+
+# 내 질문 목록
+def my_question_list(request):
+    if request.method == 'GET':
+        question = Question.objects.filter(author=request.user)
+    return render(request, 'my_question_list.html', {'question': question})
+
+# 내 답변 목록
+def my_answer_list(request):
+    if request.method == 'GET':
+        answer = Answer.objects.filter(author=request.user)
+    return render(request, 'my_answer_list.html', {'answer': answer})
 
 
 # 질문 수정
 def question_edit(request, question_id):
-    question = get_object_or_404(QuestionForm, pk=question_id)
+    question = get_object_or_404(Question, pk=question_id)
     if request.method == 'POST':
         form = QuestionForm(request.POST, request.FILES, instance=question)
         if form.is_valid():

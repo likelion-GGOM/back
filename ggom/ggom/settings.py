@@ -13,23 +13,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-secret_file = os.path.join(BASE_DIR, 'secrets.json')
 
-with open(secret_file) as f:
-    secrets = json.loads(f.read())
 
-def get_secret(setting, secrets=secrets):
-    try:
-        return secrets[setting]
-    except KeyError:
-        error_msg = "Set the {} environment variable".format(setting)
-        raise ImproperlyConfigured(error_msg)
-get_secret("PASSWORD")
+
+SECRET_KEY = '28r6%w-ci06rqzajsi2^4nu$(7e#zudzf@%e1pgbv49lv5-%xl'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['34.64.38.3', 'localhost', '127.0.0.1']
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
@@ -46,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts',
     'board',
+    'rest_framework',
 ]
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
@@ -145,11 +138,3 @@ LOGIN_REDIRECT_URL = 'home'
 LOGIN_URL = 'login_view'  # 로그인 URL을 실제로 사용하는 이름으로 변경
 LOGOUT_URL = 'login_view'  # 로그아웃 URL을 실제로 사용하는 이름으로 변경
 
-#이메일
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = "smtp.naver.com"
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'grace10apr@naver.com'
-EMAIL_HOST_PASSWORD = get_secret("PASSWORD")
-EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
