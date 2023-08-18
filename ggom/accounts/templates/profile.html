@@ -1,10 +1,31 @@
+{% load static %}
 <!DOCTYPE html>
-<head></head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="{% static 'css/profile.css' %}" />
+  <title>{{ question.title }}</title>
+</head>
 <body>
-    <h2>프로필 사진 변경</h2>
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ image_form.as_p }}
-        <button type="submit">사진 변경하기</button>
-    </form>
+  <div class="row">
+    <div class="col">
+      <a class="menu">프로필 사진 변경</a>
+    </div>
+  </div>
+  <div class="line"></div>
+
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="changeProfile">{{ image_form.profile_image }}</div>
+    <img id="imagePreview" class="image-preview" src="{{ profile_image }}" />
+    <br />
+    <button
+      type="button"
+      onclick="document.getElementById('id_profile_image').click();"
+    >
+      사진 선택
+    </button>
+    <button type="submit">사진 변경하기</button>
+  </form>
+  <script src="{% static 'js/profile.js' %}"></script>
 </body>

@@ -5,9 +5,11 @@ from django.utils.translation import gettext as _
 
 
 class ProfileImageForm(forms.ModelForm):
+    profile_image = forms.ImageField(widget=forms.FileInput(attrs={'style': 'display: none;'}))
     class Meta:
         model = CustomUser
         fields = ['profile_image']
+
 
 class ChangeNicknameForm(forms.Form):
     new_nickname = forms.CharField(max_length=50)
