@@ -1,8 +1,0 @@
-{% block content %}
-  <h1>Edit Question</h1>
-  <form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Update</button>
-  </form>
-{% endblock %}
