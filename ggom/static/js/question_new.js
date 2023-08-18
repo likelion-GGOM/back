@@ -8,7 +8,7 @@ console.log("input =", input);
 input.addEventListener("keydown", (event) => {
   console.log("kkk =");
   console.log("event =", event);
-  if (event.which == 38 && input.value.length > 0) {
+  if (event.which == 13 && input.value.length > 0) {
     var text = document.createTextNode(input.value);
     var p = document.createElement("p");
     container.appendChild(p);
