@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>질문 목록</title>
+</head>
+<body>
+    <h1>질문 목록</h1>
+  <ul>
+    {% for q in question %}
+      <li>
+        <!-- 질문의 제목을 표시하고, 해당 질문의 상세 페이지로 이동할 수 있는 링크를 표시 -->
+        <a href="{% url 'board:question_detail' q.id %}">{{ q.title }}</a>
+        <p>{{ q.content|truncatewords:20 }}</p> <!-- 질문 내용의 처음 20단어만 표시 -->
+        <p>작성자: {{ q.author }}</p> 
+        <p>작성일: {{ q.create_date }}</p>
+      </li>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'board:question_new' %}">새 질문 작성</a>
+  
+</body>
+</html>
+
+  
