@@ -8,6 +8,8 @@
 <body>
     <h1>{{ question.title }}</h1>
     <p>{{ question.content }}</p>
+    <p> 작성자 </p>
+    <p>{{ question.author}}</p>
     {% if question.file %}
         <a href="{{ question.file.url }}">Attached File</a>
     {% endif %}
@@ -25,6 +27,14 @@
         <p>아직 답변이 없습니다.</p> <!-- 답변이 없을 때의 메시지 -->
     {% endfor %}
 
+    {% if user == question.author %}
+        <a href="{% url 'board:question_edit' question.id %}">수정/삭제</a> <!-- 수정 버튼 -->
+        
+        <button onclick="markAsSolved()">해결 완료</button> <!-- 답변 완료 버튼 -->
+        
+    {% else %}
+        <a href="{% url 'board:answer_create' question.id %}">답변 달기</a> <!-- 답변 달기 버튼 -->
+    {% endif %}
 
 
     <!-- 여기에 답변 목록을 추가할 수 있습니다. -->

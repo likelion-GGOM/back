@@ -30,7 +30,7 @@ def question_create(request):
 # 질문 상세 보기
 def question_detail(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
-    # is_author = request.user == question.author # 현재 로그인된 사용자와 글의 작성자 비교
+    is_author = request.user == question.author # 현재 로그인된 사용자와 글의 작성자 비교
     answer = Answer.objects.filter(question=question_id)
     return render(request, 'question_detail.html', {'question': question})
 
