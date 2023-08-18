@@ -10,7 +10,7 @@ class ProfileImageForm(forms.ModelForm):
         fields = ['profile_image']
 
 class ChangeNicknameForm(forms.Form):
-    new_nickname = forms.CharField(max_length=50, label='new_nickname')
+    new_nickname = forms.CharField(max_length=50)
 
 
 '''

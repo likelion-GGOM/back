@@ -1,0 +1,121 @@
+@font-face {
+  font-family: "Pretendard-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+* {
+  font-family: "Pretendard-Regular";
+}
+body {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+p {
+  text-align: center;
+}
+.logo {
+  padding-top: 30%;
+  padding-bottom: 10%;
+}
+.logo_text {
+  font-size: 50px;
+  font-weight: bold;
+}
+.outer {
+  width: 300px;
+  height: 200px;
+  margin: 0 auto;
+  overflow-x: hidden;
+}
+
+.inner-list {
+  display: flex;
+  transition: 0.3s ease-out;
+  height: 100%;
+  align-items: center; /* 세로 중앙 정렬 */
+}
+
+.inner-list {
+  display: flex;
+  transition: 0.3s ease-out;
+  height: 100%;
+  align-items: center; /* 세로 중앙 정렬 */
+  justify-content: center; /* 가로 중앙 정렬 추가 */
+}
+
+.right-button-list {
+  text-align: center;
+  display: flex; /* 중앙 정렬을 위해 flex 속성 추가 */
+  justify-content: center; /* 가로 중앙 정렬 추가 */
+  align-items: center; /* 세로 중앙 정렬 추가 */
+}
+
+.left-button-list {
+  text-align: center;
+  display: flex; /* 중앙 정렬을 위해 flex 속성 추가 */
+  justify-content: center; /* 가로 중앙 정렬 추가 */
+  align-items: center; /* 세로 중앙 정렬 추가 */
+}
+
+.ex_slide {
+  display: flex;
+  position: relative; /* 부모 요소에 상대적 위치 설정 */
+}
+
+.login_signup {
+  background-color: white;
+  width: 100%; /* 전체 너비에서 20px * 2 만큼 뺀 값 */
+  margin-top: 20%;
+  position: fixed;
+  /* 여백을 요소 크기에 포함시킴 */
+  display: flex;
+  border-color: white;
+  align-items: center; /* 세로 중앙 정렬 추가 */
+  position: relative; /* 부모 요소에 상대적 위치 설정 */
+  justify-content: center; /* 가로 중앙 정렬 추가 */
+}
+.signup {
+  margin-right: 3%;
+}
+.signup_btn {
+  width: 170px;
+  height: 45px;
+  background-color: white;
+  color: #2e7cf6;
+  border-radius: 12px;
+  border: solid 0.3px #2e7cf6;
+}
+.login {
+  margin-left: 3%;
+}
+.login_btn {
+  width: 170px;
+  height: 45px;
+  background-color: #2e7cf6;
+  color: white;
+  border-radius: 12px;
+  border: solid 0.3px #2e7cf6;
+}
+
+/* 슬라이드 위치 동그라미 */
+.slide-index {
+  position: absolute;
+  bottom: 10px; /* 아래 여백 조절 */
+  left: 50%; /* 가운데 정렬을 위해 좌측 50% 설정 */
+  transform: translateX(-50%); /* 가운데 정렬을 위한 X축 이동 */
+  display: flex;
+  gap: 10px; /* 동그라미 사이의 간격 설정 */
+}
+
+.slide-index > span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: gray; /* 비활성화된 동그라미 색상 */
+}
+
+.slide-index > span.active {
+  background-color: #2e7cf6; /* 활성화된 동그라미 색상 */
+}

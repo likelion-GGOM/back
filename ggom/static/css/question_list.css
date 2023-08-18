@@ -1,0 +1,189 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+@font-face {
+  font-family: "Pretendard-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+input {
+  width: 100%;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 14px;
+  position: relative;
+}
+a {
+  text-decoration-line: none;
+  color: black;
+}
+body {
+  font-family: "Pretendard-Regular";
+}
+.fix_area {
+  position: sticky;
+  top: 0;
+  background-color: white;
+}
+.logo {
+  /* position: sticky; */
+  width: 100%;
+  padding-top: 10%;
+  padding-bottom: 8%;
+  display: flex;
+  align-items: center; /* 세로 중앙 정렬 */
+}
+.logo_text {
+  display: flex;
+  flex: 1;
+  font-size: 20px;
+  font-weight: bold;
+  align-items: center;
+  justify-content: center;
+  margin-left: 50px;
+}
+.profile_img {
+  width: 25px;
+  height: 25px;
+  margin-right: 20px;
+}
+.line {
+  border-top: 1px solid #c9c8c8;
+  width: 100%;
+}
+.btn {
+  display: flex;
+  margin-top: 7%;
+
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.request {
+  margin-right: 3%;
+}
+
+.new_btn {
+  border-radius: 20px;
+  background-color: #2e7cf6;
+  border-style: solid;
+  border-color: #2e7cf6;
+  border-width: 1.8px;
+  color: white;
+  font-size: 10px;
+  text-align: center; /* 텍스트 가운데 정렬 */
+}
+.clicked_btn {
+  border-radius: 20px;
+  background-color: white;
+  border-style: solid;
+  border-color: #2e7cf6;
+  border-width: 1.8px;
+  color: #2e7cf6;
+  font-size: 10px;
+  text-align: center; /* 텍스트 가운데 정렬 */
+}
+.solved {
+  background-color: #2e7cf6;
+  border-radius: 20px;
+  width: 65px;
+  height: 30px;
+}
+.problem_solve {
+  margin: 10%;
+  color: white;
+  font-size: 10px;
+  text-align: center; /* 텍스트 가운데 정렬 */
+  font-weight: 200;
+}
+.search_space {
+  /* width: 90%; */
+  height: 50px;
+  margin-top: 5%;
+  padding-bottom: 5%;
+  margin-left: 20px;
+  margin-right: 20px;
+  display: flex;
+  align-items: center; /* 세로 중앙 정렬 */
+}
+.input_search {
+  border-radius: 12px;
+  border-style: solid;
+  border-color: black;
+  border-width: 0.9px;
+  padding-left: 15px; /* 여백의 크기를 조절할 수 있습니다 */
+  box-sizing: border-box; /* padding과 border를 크기에 포함시킴 */
+  transition: border-color 0.3s; /* 변화를 부드럽게 만들기 위한 트랜지션 */
+  outline: none; /* 포커스 시 생기는 외곽선 제거 */
+  margin-right: 3%;
+}
+
+.input_search:focus {
+  border: solid 2px #2e7cf6;
+}
+.new_search_btn {
+  background-color: #2e7cf6;
+  border-radius: 12px;
+  color: white;
+}
+.search_text {
+  text-align: center; /* 텍스트 가운데 정렬 */
+  font-size: 16px;
+  color: white;
+  padding-top: 3%;
+  padding-bottom: 3%;
+}
+.post_space {
+  display: flex;
+  margin-top: 5%;
+  padding-right: 5%;
+
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.post_img {
+}
+.cover_img {
+  height: 100px;
+}
+.post_text {
+  display: block;
+  margin-left: 20px;
+  margin-top: 20px;
+  font-size: 17px;
+  font-weight: bold;
+  color: #404040;
+}
+.post_content {
+  margin-top: 5%;
+  font-size: 10px;
+  color: #2e7cf6;
+}
+.write_btn {
+  width: 80%;
+  height: 100px;
+  text-align: right;
+}
+.pencil_btn {
+  background-color: #2e7cf6;
+  border-radius: 100%;
+  width: 70px;
+  height: 70px;
+  right: 8%;
+  bottom: 35px;
+  position: fixed;
+  display: inline-block;
+  text-align: center; /* 텍스트 가운데 정렬 */
+}
+.pencil_img {
+  width: 30px;
+  padding-top: 18px;
+}
+.post_line {
+  border-top: 1px solid #c9c8c8;
+  width: 100%;
+  margin-top: 3%;
+}

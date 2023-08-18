@@ -1,11 +1,36 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/my_question_list.css' %}" />
+    <title>my_question_list</title>
+  </head>
+  <body>
+    <!-- 로고 -->
+    <div class="fix_area">
+      <div class="logo">
+        <p class="logo_text">내가 질문한 꼼</p>
+      </div>
+      <div class="line"></div>
+    </div>
+    <!-- 게시물 -->
+    <a href="https://">
+      <div class="post_space">
+        <div class="post_img">
+          <img
+            src="..\img\Rectangle.png"
+            class="cover_img"
+            alt="포스트 이미지"
+          />
+        </div>
+        <div class="post_text">
+          <p class="post_title">인스타그램 스토리 올리는 법</p>
+          <p class="post_content">30분 전</p>
+        </div>
+      </div>
+    </a>
+    <div class="post_line"></div>
+  </body>
 </html>

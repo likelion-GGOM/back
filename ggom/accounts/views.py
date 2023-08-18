@@ -78,16 +78,13 @@ def mypage(request):
 
 #닉네임 변경
 def change_nickname(request):
+    user = request.user
     if request.method == 'POST':
-        form = ChangeNicknameForm(request.POST)
-        if form.is_valid():
-            new_nickname = form.cleaned_data['new_nickname']
-            request.user.nickname = new_nickname
-            request.user.save()
-            return redirect('accounts:mypage')
-    else:
-        form = ChangeNicknameForm()
-    return render(request, 'nickname.html',{'form':form})
+        new_nickname = request.POST['nickname']
+        user.nickname = new_nickname
+        request.user.save()
+        return redirect('accounts:mypage')
+    return render(request, 'nickname.html')
 
 #프로필 사진 변경
 def change_profile(request):

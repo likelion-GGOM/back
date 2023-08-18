@@ -1,26 +1,86 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>home_need</title>
+    <link rel="stylesheet" href="{% static 'css/question_list.css' %}" />
     <title>질문 목록</title>
-</head>
-<body>
-    <h1>질문 목록</h1>
-  <ul>
-    {% for q in question %}
+  </head>
+  <body>
+    <!-- 로고 -->
+    <div class="fix_area">
+      <div class="logo">
+        <p class="logo_text">로고</p>
+        <a href="https://">
+          <img
+            src="{% static 'img/Profile_Circle.png' %}"
+            class="profile_img"
+            alt="프로필 이미지"
+        /></a>
+      </div>
+      <div class="line"></div>
+      <!-- 도움 필요, 해결 완료 버튼 -->
+      <div class="btn">
+        <div class="request">
+          <input
+            type="button"
+            value="도움 필요"
+            class="new_btn"
+            id="need_btn"
+          />
+        </div>
+        <div class="request">
+          <input
+            type="button"
+            value="해결 완료"
+            class="new_btn"
+            id="solved_btn"
+          />
+        </div>
+      </div>
+      <!-- 검색 버튼 -->
+      <div class="search_space">
+        <input type="text" class="input_search" placeholder="검색하세요" />
+        <a href="https://">
+          <input type="button" value="검색" class="new_search_btn"
+        /></a>
+      </div>
+    </div>
+    <ul>
+      {% for q in question %}
       <li>
         <!-- 질문의 제목을 표시하고, 해당 질문의 상세 페이지로 이동할 수 있는 링크를 표시 -->
-        <a href="{% url 'board:question_detail' q.id %}">{{ q.title }}</a>
-        <p>{{ q.content|truncatewords:20 }}</p> <!-- 질문 내용의 처음 20단어만 표시 -->
-        <p>작성자: {{ q.author }}</p> 
-        <p>작성일: {{ q.create_date }}</p>
-      </li>
-    {% endfor %}
-  </ul>
-  <a href="{% url 'board:question_new' %}">새 질문 작성</a>
-  
-</body>
-</html>
+        <div class="post_space">
+          <div class="post_text">
+            <a href="{% url 'board:question_detail' q.id %}" class="post_title"
+              >{{ q.content|truncatewords:20 }}</a
+            >
 
-  
+            <!-- <p class="post_title">{{ q.content|truncatewords:20 }}</p> -->
+            <!-- 질문 내용의 처음 20단어만 표시 -->
+            <p class="post_content">작성자: {{ q.author }}</p>
+            <p class="post_content">작성일: {{ q.create_date }}</p>
+          </div>
+        </div>
+        <div class="post_line"></div>
+      </li>
+      {% endfor %}
+    </ul>
+    <!--  -->
+    <!-- <div class="write_btn"> -->
+    <a class="pencil_btn" href="{% url 'board:question_new' %}">
+      <img
+        src="{% static 'img/pencil.png' %}"
+        class="pencil_img"
+        alt="글쓰기 연필"
+      />
+    </a>
+    <!-- </div> -->
+    <!--  -->
+    <!-- <a href="{% url 'board:question_new' %}">새 질문 작성</a> -->
+    <script src="{% static 'js/question_list.js' %}"></script>
+  </body>
+</html>

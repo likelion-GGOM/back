@@ -1,0 +1,93 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+@font-face {
+  font-family: "Pretendard-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+a {
+  text-decoration-line: none;
+}
+body {
+  font-family: "Pretendard-Regular";
+}
+.fix_area {
+  position: sticky;
+  top: 0;
+  background-color: white;
+}
+.logo {
+  /* position: sticky; */
+  width: 100%;
+  padding-top: 10%;
+  padding-bottom: 8%;
+  display: flex;
+  align-items: center; /* 세로 중앙 정렬 */
+}
+.logo_text {
+  display: flex;
+  flex: 1;
+  font-size: 20px;
+  font-weight: bold;
+  align-items: center;
+  justify-content: center;
+}
+
+.line {
+  border-top: 1px solid #c9c8c8;
+  width: 100%;
+}
+.post_space {
+  display: flex;
+  margin-top: 5%;
+  padding-right: 5%;
+
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+.post_img {
+}
+.cover_img {
+  height: 100px;
+}
+.post_text {
+  display: block;
+  margin-left: 20px;
+  margin-top: 20px;
+  font-size: 17px;
+  font-weight: bold;
+  color: #404040;
+}
+.post_content {
+  margin-top: 5px;
+  font-size: 10px;
+  color: #2e7cf6;
+}
+.post_title {
+  font-size: 15px;
+}
+.post_line {
+  border-top: 1px solid #c9c8c8;
+  width: 100%;
+  margin-top: 3%;
+}
+.solved {
+  background-color: #2e7cf6;
+  color: white;
+  border-radius: 5%;
+  margin-top: 5px;
+  font-size: 10px;
+  width: 40px;
+  height: 13px;
+  font-weight: 100;
+  /* 가로 세로 중앙정렬 */
+  text-align: center; /* 텍스트 수평 가운데 정렬 */
+  display: flex;
+  justify-content: center; /* 텍스트 수직 가운데 정렬 */
+  align-items: center; /* 텍스트 수직 가운데 정렬 */
+}

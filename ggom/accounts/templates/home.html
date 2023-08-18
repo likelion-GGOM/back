@@ -1,4 +1,68 @@
-<div>
-    <h3><a href={% url 'accounts:signup' %}>회원가입</a></h3>
-    <h3><a href={% url 'accounts:login_view' %}>로그인</a></h3>
-</div>
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        />
+    
+        <title>첫 페이지</title>
+      </head>
+      <body>
+        <!-- 로고 -->
+        <div class="logo">
+            <p class="logo_text">로고</p>
+        </div>
+        <!-- 슬라이드 -->
+        <div class="ex_slide">
+            <div class="left-button-list">
+                <i class="fa-solid fa-chevron-left"></i>
+            </div>
+            <div class="outer">
+                <div class="inner-list">
+                    <div class="inner">
+                        <p>안녕하세요 꼼에 오신 걸 환영합니다</p>
+                    </div>
+                    <div class="inner">
+                        <p>궁금한 걸 물어보고</p>
+                    </div>
+                    <div class="inner">
+                        <p>알고 있는 걸 공유해요</p>
+                    </div>
+                </div>
+            </div>
+            <div class="right-button-list">
+                <i class="fa-solid fa-chevron-left fa-rotate-180"></i>
+            </div>
+            <!-- 동그라미 땜에 추가한 부분 -->
+            <div class="slide-index">
+                <span class="active" data-index="0"></span>
+                <span data-index="1"></span>
+                <span data-index="2"></span>
+            </div>
+        </div>
+          <!-- 가입하기, 로그인 버튼 -->
+        <div class="login_signup">
+            <div class="signup">
+              <a href={% url 'accounts:signup' %}>
+                <input type="submit" value="가입하기" class="signup_btn"
+              /></a>
+            </div>
+            <div class="login">
+              <a href={% url 'accounts:login_view' %}>
+                <input type="button" value="로그인" class="login_btn"
+              /></a>
+            </div>
+        </div>
+            <!-- <h3><a href={% url 'accounts:signup' %}>회원가입</a></h3>
+            <h3><a href={% url 'accounts:login_view' %}>로그인</a></h3> -->
+        <script src="{% static 'js/home.js' %}"></script>
+
+      </body>
+
+</html>

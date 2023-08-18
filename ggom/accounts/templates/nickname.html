@@ -1,5 +1,4 @@
 {% load static %}
-
 <!DOCTYPE html>
 <head>
   <meta charset="UTF-8" />
@@ -13,7 +12,9 @@
 </head>
 <body>
   <form method="post">
-    {% csrf_token %} {{ form.as_p }}
+    {% csrf_token %}
+    <!-- {{ form.as_p }} -->
+
     <!-- 로고 -->
     <div class="fix_area">
       <div class="logo">
@@ -22,12 +23,16 @@
       <div class="line"></div>
     </div>
 
-    <!-- 비밀번호 변경 -->
+    <!-- 닉네임 변경 -->
     <div class="sing_up">
-      <p class="password_text">새로운 비밀번호를 입력해주세요</p>
+      <p class="password_text">새로운 닉네임을 입력해주세요</p>
       <div class="password_text">
-        <input type="password" class="password1" placeholder="새 닉네임" />
-        <i class="fa-solid fa-check"></i>
+        <input
+          type="text"
+          class="password1"
+          name="nickname"
+          placeholder="새 닉네임"
+        />
       </div>
     </div>
     <div class="done_btn">
