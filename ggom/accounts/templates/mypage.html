@@ -75,9 +75,10 @@
 
     <!-- <h2>내가 작성한 질문</h2> -->
     <div class="kk">
+        <a href="{% url 'board:question_list' %}">
         <div class="text1">내가 작성한 질문</div>
         {% for question in questions %}
-        <div>{{ question.content }}</div>
+        <div>{{ question.content }}</div></a>
         {% endfor %}
     </div>
 

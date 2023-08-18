@@ -13,13 +13,21 @@
     <!-- 로고 -->
     <div class="fix_area">
       <div class="logo">
-        <p class="logo_text">로고</p>
-        <a href="https://">
-          <img
+        <p class="logo_text">
+          <img src="{% static 'img/log_img.png' %}" />
+        </p>
+        <a href="/accounts/mypage">
+          <!-- <img
             src="{% static 'img/Profile_Circle.png' %}"
             class="profile_img"
             alt="프로필 이미지"
-        /></a>
+        /> -->
+          <img
+            src="{{ request.user.get_image_url }}"
+            alt="Profile Image"
+            width="100"
+          />
+        </a>
       </div>
       <div class="line"></div>
       <!-- 도움 필요, 해결 완료 버튼 -->
