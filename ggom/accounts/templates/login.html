@@ -1,21 +1,62 @@
+{% load static %}
 <!DOCTYPE html>
-<head>
-</head>
-<body>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>login</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}" />
+  </head>
+  <body>
     <div class="container">
-        <h1>로그인</h1>
+      <form method="POST" action="{% url 'accounts:login_view' %}">
+        {% csrf_token %}
+        <!-- 꼼 로고 -->
+        <div class="logo">
+          <p class="logo_text">꼼 로고</p>
+        </div>
 
-        <form method="POST" action="{% url 'accounts:login_view' %}">
-            {% csrf_token %}
-            <label for="username">ID:</label><br>
-            <input type="text" id="username" name="username" required><br>
-            <label for="password">Password:</label><br>
-            <input type="password" id="password" name="password" required><br>
-            <!--로그인 실패시 에러창-->
-            {% if error %}
-            <p style="color: red;">{{ error }}</p>
-            {% endif %}
-            <button type="submit">로그인</button>
-        </form>
+        <!-- 로그인, 비밀번호 입력 -->
+        <div class="login">
+          <div class="login_id">
+            <label for="username"></label><br />
+
+            <input
+              type="text"
+              class="id"
+              name="username"
+              placeholder="로그인"
+              required
+            />
+          </div>
+          <div class="login_id">
+            <label for="password"></label><br />
+
+            <input
+              type="text"
+              class="id"
+              name="password"
+              placeholder="비밀번호"
+              required
+            />
+          </div>
+        </div>
+        <div class="forget_password">
+          <a href="https://">
+            <p class="password_forget">비밀번호를 잊으셨나요?</p></a
+          >
+        </div>
+        <div class="btn">
+          <a href="https://">
+            <button type="submit" class="login_btn">로그인</button>
+          </a>
+        </div>
+
+        <!--로그인 실패시 에러창-->
+        {% if error %}
+        <p class="error" style="color: red">{{ error }}</p>
+        {% endif %}
+      </form>
     </div>
-</body>
+  </body>
+</html>

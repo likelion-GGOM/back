@@ -1,24 +1,94 @@
+{% load static %}
 <!DOCTYPE html>
-<html>
-<head>
-    <title>회원가입</title>
-</head>
-<body>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>signup</title>
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    />
+  </head>
+  <body>
     <div class="container">
-        <h1>회원가입</h1>
+      <form method="POST" action="{% url 'accounts:signup' %}">
+        {% csrf_token %}
 
-        <form method="POST" action="{% url 'accounts:signup' %}">
-            {% csrf_token %}
-            ID : <br>
-            <input name="username" type="text"><br>
-            Nickname : <br>
-            <input name="nickname" type="text"><br>
-            Password : <br>
-            <input name="password" type="password"><br>
-            E-mail : <br>
-            <input name="email" type="text"><br>
-            <input type="submit" value="회원가입">
-        </form>
+        <!-- 꼼 로고 -->
+        <div class="logo">
+          <p class="logo_text">꼼에 가입해볼까요?</p>
+        </div>
+        <div class="sing_up">
+          <div class="input_text">
+            <input
+              type="text"
+              class="input"
+              name="username"
+              placeholder="아이디"
+            />
+          </div>
+          <div class="input_text">
+            <input
+              type="text"
+              class="input"
+              name="nickname"
+              placeholder="닉네임"
+            />
+          </div>
+          <div class="password_text">
+            <input
+              type="password"
+              class="password1"
+              name="password"
+              placeholder="비밀번호"
+            />
+            <i class="fa-solid fa-eye"></i>
+          </div>
+          <!-- 비밀번호 조건 -->
+          <div class="signup_con">
+            <ul class="require_list">
+              <!-- 최소 8글자 -->
+              <li>
+                <i class="fa-solid fa-x"></i>
+                <span>최소 8자</span>
+              </li>
+              <!-- 숫자 1개 이상 -->
+              <li>
+                <i class="fa-solid fa-x"></i>
+                <span>숫자 1개 이상 포함</span>
+              </li>
+              <!-- 영어 소문자 1개 이상 -->
+              <li>
+                <i class="fa-solid fa-x"></i>
+                <span>영어 소문자 1개 이상 포함</span>
+              </li>
+              <!-- 영어 대문자 1개 이상 -->
+              <li>
+                <i class="fa-solid fa-x"></i>
+                <span>영어 대문자 1개 이상 포함</span>
+              </li>
+            </ul>
+          </div>
+          <div class="input_text">
+            <input
+              type="text"
+              class="input"
+              name="email"
+              placeholder="이메일"
+            />
+          </div>
+        </div>
+        <div class="btn">
+          <a href="https://">
+            <input type="submit" class="login_btn" value="회원가입" />
+          </a>
+        </div>
+      </form>
     </div>
-</body>
+
+    <!-- 자바스크립트 연결 -->
+    <script src="{% static 'js/signup.js' %}"></script>
+  </body>
 </html>

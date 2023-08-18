@@ -1,10 +1,37 @@
+{% load static %}
+
 <!DOCTYPE html>
-<head></head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="{% static 'css/nickname.css' %}" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+  />
+  <title>password_change</title>
+</head>
 <body>
-    <h2>닉네임 변경</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">변경하기</button>
-    </form>
+  <form method="post">
+    {% csrf_token %} {{ form.as_p }}
+    <!-- 로고 -->
+    <div class="fix_area">
+      <div class="logo">
+        <p class="logo_text">닉네임 변경</p>
+      </div>
+      <div class="line"></div>
+    </div>
+
+    <!-- 비밀번호 변경 -->
+    <div class="sing_up">
+      <p class="password_text">새로운 비밀번호를 입력해주세요</p>
+      <div class="password_text">
+        <input type="password" class="password1" placeholder="새 닉네임" />
+        <i class="fa-solid fa-check"></i>
+      </div>
+    </div>
+    <div class="done_btn">
+      <button type="submit" class="btn">변경하기</button>
+    </div>
+  </form>
 </body>

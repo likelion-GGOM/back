@@ -44,7 +44,7 @@ def login_view(request):
             login(request, user=user)
             return redirect('accounts:mypage') # 로그인 성공 시 이동할 URL 연결할 곳
         else:
-            return render(request, 'login.html', {'error' : 'username or password is incorrect.'})
+            return render(request, 'login.html', {'error' : '올바른 계정이 아닙니다.'})
     else:
         return render(request, 'login.html')
 

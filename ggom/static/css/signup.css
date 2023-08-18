@@ -1,0 +1,149 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+@font-face {
+  font-family: "Pretendard-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+a {
+  text-decoration-line: none;
+}
+
+body {
+  margin-left: 25px;
+  margin-right: 25px;
+  font-family: "Pretendard-Regular";
+}
+.logo {
+  width: 100%;
+  padding-top: 150px;
+}
+.logo_text {
+  font-size: 32px;
+  font-weight: bold;
+  color: #404040;
+}
+.sing_up {
+  text-align: center; /* 텍스트 가운데 정렬 */
+  padding-top: 5%;
+  overflow: hidden;
+}
+.input_text {
+  padding-top: 5%;
+}
+.password_text {
+  padding-top: 5%;
+  position: relative; /* 이 줄 추가 */
+  padding-top: 5%;
+}
+.input {
+  width: 100%;
+  height: 60px;
+  border-radius: 12px;
+  border-style: solid;
+  border-color: black;
+  border-width: 0.9px;
+  padding-left: 15px;
+  box-sizing: border-box;
+  transition: border-color 0.3s;
+  outline: none;
+}
+
+.password_text i {
+  right: 18px;
+  top: 63%;
+  font-size: 1.2rem;
+  color: #999;
+  cursor: pointer;
+  position: absolute;
+  transform: translateY(-50%);
+}
+
+.password1 {
+  width: 100%;
+  height: 60px;
+  border-radius: 12px;
+  border-style: solid;
+  border-color: black;
+  border-width: 0.9px;
+  padding-left: 15px; /* 여백의 크기를 조절할 수 있습니다 */
+  box-sizing: border-box; /* padding과 border를 크기에 포함시킴 */
+  transition: border-color 0.3s; /* 변화를 부드럽게 만들기 위한 트랜지션 */
+  outline: none; /* 포커스 시 생기는 외곽선 제거 */
+}
+.input:focus {
+  border: solid 2px #2e7cf6;
+}
+.password1:focus {
+  border: solid 2px #2e7cf6;
+}
+.signup_con {
+  padding-top: 1%;
+}
+.signup_con p {
+  color: black;
+  font-size: 1.3rem;
+}
+.signup_con .require_list {
+  margin-top: 20px;
+}
+.require_list li {
+  font-size: 0.8rem;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+/* 조건 성림했을 때 */
+.require_list li.valid i {
+  font-size: 1.2rem;
+  color: #5fb342;
+}
+.require_list li span {
+  margin-left: 12px;
+  color: black;
+}
+/* 조건 성림했을 때 */
+.requirement-list li.valid span {
+  color: #5fb342;
+}
+.require_list li i {
+  width: 20px;
+  color: black;
+  font-size: 0.6rem;
+}
+.condition_part {
+  display: flex;
+  padding-top: 3%;
+  align-items: center; /* 세로 중앙 정렬 */
+}
+
+.false1 {
+  width: 8%;
+}
+.false2 {
+  width: 8%;
+}
+.condition {
+  font-size: 12px;
+  padding-left: 3%;
+}
+.btn {
+  text-align: center; /* 텍스트 가운데 정렬 */
+  padding-top: 10%;
+}
+.login_btn {
+  width: 100%;
+  height: 60px;
+  background-color: #2e7cf6;
+  border-color: #2e7cf6;
+  border-style: solid;
+  border-radius: 12px;
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+}
